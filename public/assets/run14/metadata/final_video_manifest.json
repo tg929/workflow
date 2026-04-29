@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "source_run": "run14",
+  "source_script_name": "e2e_short_ui_goal",
+  "title": "",
+  "concat_spec": {
+    "concat_mode": "ffmpeg_concat_demuxer_reencode",
+    "trim_leading_seconds": 1.0,
+    "blackout_leading_seconds": 0.4,
+    "video_codec": "libx264",
+    "audio_codec": "aac",
+    "pixel_format": "yuv420p",
+    "faststart": true
+  },
+  "concat_list_path": "D:\\code\\ai_studio_addstore\\zenflux_agent-feat_ai_studio_addstore\\zenflux_agent_git\\AI-studio-main\\runs\\run14\\10_final\\concat_inputs.txt",
+  "final_video_path": "D:\\code\\ai_studio_addstore\\zenflux_agent-feat_ai_studio_addstore\\zenflux_agent_git\\AI-studio-main\\runs\\run14\\10_final\\final_video.mp4",
+  "inputs": [
+    {
+      "shot_id": "shot_001",
+      "order": 1,
+      "source_video_path": "D:\\code\\ai_studio_addstore\\zenflux_agent-feat_ai_studio_addstore\\zenflux_agent_git\\AI-studio-main\\runs\\run14\\09_shot_videos\\videos\\shot_001.mp4",
+      "trimmed_video_path": "D:\\code\\ai_studio_addstore\\zenflux_agent-feat_ai_studio_addstore\\zenflux_agent_git\\AI-studio-main\\runs\\run14\\10_final\\trimmed\\shot_001.mp4"
+    },
+    {
+      "shot_id": "shot_002",
+      "order": 2,
+      "source_video_path": "D:\\code\\ai_studio_addstore\\zenflux_agent-feat_ai_studio_addstore\\zenflux_agent_git\\AI-studio-main\\runs\\run14\\09_shot_videos\\videos\\shot_002.mp4",
+      "trimmed_video_path": "D:\\code\\ai_studio_addstore\\zenflux_agent-feat_ai_studio_addstore\\zenflux_agent_git\\AI-studio-main\\runs\\run14\\10_final\\trimmed\\shot_002.mp4"
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "schema_version": "1.0",
+  "source_script_name": "e2e_short_ui_goal",
+  "title": "",
+  "genre": "冒险",
+  "logline": "年轻天才少女在挑战现场觉醒能力，开启新冒险。",
+  "story_meta": {
+    "era": "",
+    "world_setting": "",
+    "tone": "紧张、兴奋",
+    "core_conflict": "少女在危险挑战中觉醒能力面对未知"
+  },
+  "characters": [
+    {
+      "id": "char_001",
+      "name": "少女",
+      "aliases": [],
+      "role_type": "main",
+      "gender": "女",
+      "age": "年轻",
+      "occupation_identity": "天才少女",
+      "personality_traits": [
+        "聪慧",
+        "坚定"
+      ],
+      "appearance_summary": "眼神聪慧，眉头紧锁，身体微微颤抖",
+      "costume_summary": "",
+      "identity_markers": [],
+      "must_keep_features": [
+        "聪慧的眼神"
+      ],
+      "relationship_targets": [],
+      "signature_prop_ids": [],
+      "default_scene_ids": [
+        "scene_001"
+      ],
+      "first_appearance_segment_id": "seg_001",
+      "visual_profile": {
+        "age_stage": "年轻",
+        "body_build": "",
+        "face_type": "",
+        "skin_tone": "",
+        "eye_impression": "聪慧",
+        "hair_color": "",
+        "hair_length": "",
+        "hair_style": "",
+        "facial_hair": "",
+        "silhouette_keywords": []
+      },
+      "costume_profile": {
+        "costume_type": "",
+        "primary_color": "",
+        "secondary_colors": [],
+        "material": "",
+        "layer_structure": "",
+        "trim_details": [],
+        "accessories": [],
+        "footwear": ""
+      },
+      "visual_identity_lock": {
+        "required_features": [
+          "聪慧的眼神"
+        ],
+        "forbidden_drifts": [
+          "男性形象"
+        ]
+      }
+    }
+  ],
+  "scenes": [
+    {
+      "id": "scene_001",
+      "name": "挑战现场",
+      "location": "",
+      "scene_type": "unknown",
+      "time_of_day": "",
+      "weather": "",
+      "atmosphere": "紧张、危险",
+      "environment_summary": "昏暗的挑战现场，四周暗藏着无数危机",
+      "key_visual_elements": [
+        "昏暗的环境",
+        "危险的氛围"
+      ],
+      "must_keep_features": [
+        "昏暗的环境",
+        "危险的氛围"
+      ],
+      "default_character_ids": [
+        "char_001"
+      ],
+      "default_prop_ids": [],
+      "first_appearance_segment_id": "seg_001"
+    }
+  ],
+  "props": [
+    {
+      "id": "prop_001",
+      "name": "光芒力量",
+      "aliases": [],
+      "category": "other",
+      "owner_character_ids": [
+        "char_001"
+      ],
+      "default_scene_ids": [
+        "scene_001"
+      ],
+      "significance": "少女觉醒能力的体现，开启新冒险",
+      "visual_summary": "散发着光芒的力量",
+      "material_texture": "",
+      "condition_state": "",
+      "must_keep_features": [
+        "散发着光芒"
+      ],
+      "first_appearance_segment_id": "seg_002"
+    }
+  ],
+  "story_segments": [
+    {
+      "id": "seg_001",
+      "order": 1,
+      "summary": "年轻天才少女身处危险的挑战现场，内心充满恐惧但又坚定面对。",
+      "text": "昏暗的挑战现场，弥漫着紧张的氛围，四周是危险的气息。一位年轻的天才少女身处其中，她眼神聪慧，眉头紧锁，脸上满是紧张。周围的环境仿佛暗藏着无数危机，随时可能向她袭来。少女的身体微微颤抖，她从未经历过如此危险的场景，心中充满了恐惧。但她那聪慧的眼神中，又透露出一丝坚定，她知道自己必须面对这一切。",
+      "scene_ids": [
+        "scene_001"
+      ],
+      "character_ids": [
+        "char_001"
+      ],
+      "prop_ids": []
+    },
+    {
+      "id": "seg_002",
+      "order": 2,
+      "summary": "少女在挑战中觉醒能力，光芒驱散危险，她惊喜地准备迎接新冒险。",
+      "text": "突然，一股强大的压力向少女涌来，她感觉自己的呼吸都变得困难起来。在这生死攸关的时刻，少女的身体开始发生变化。光芒从她的体内闪耀而出，力量在她的身体里涌动。她的眼神变得更加明亮，脸上的恐惧也被兴奋所取代。少女觉醒了自己的能力，光芒照亮了整个挑战现场，危险的气息也随之消散。少女看着自己手中散发着光芒的力量，心中充满了惊喜。觉醒能力后的她，知道新的冒险即将展开，前方还有更多未知等待着她。",
+      "scene_ids": [
+        "scene_001"
+      ],
+      "character_ids": [
+        "char_001"
+      ],
+      "prop_ids": [
+        "prop_001"
+      ]
+    }
+  ],
+  "consistency_notes": [
+    "少女总是出现在挑战现场",
+    "光芒力量是少女觉醒能力的标志，与少女相关联"
+  ],
+  "ambiguities": []
+}

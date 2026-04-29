@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "source_script_name": "e2e_short_ui_goal",
+  "title": "",
+  "genre": "冒险",
+  "story_tone": "紧张、兴奋",
+  "visual_style": "高质量写实风，突出冒险氛围与奇幻元素",
+  "era": "",
+  "world_setting": "",
+  "color_palette": {
+    "primary": "暗色调，如深灰、深蓝",
+    "secondary": "冷色调，如浅蓝、淡紫",
+    "accent": "明亮的光芒色，如金黄、亮白",
+    "skin_tones": "自然肤色",
+    "saturation": "中低饱和度",
+    "temperature": "冷色调为主"
+  },
+  "character_design_rules": {
+    "proportions": "符合人体正常比例，突出年轻少女的轻盈感",
+    "face_rendering": "细腻描绘，突出聪慧的眼神，表现紧张与坚定的神情",
+    "hair_rendering": "根据故事氛围设计，线条流畅自然",
+    "costume_rendering": "贴合冒险题材，材质有质感，款式简洁实用",
+    "detail_level": "中等细节，重点突出面部和服装的关键特征"
+  },
+  "scene_design_rules": {
+    "environment_density": "较高，体现挑战现场暗藏危机的感觉",
+    "architectural_language": "神秘、未知风格，有独特的建筑结构",
+    "prop_integration": "道具与场景融合自然，增强危险氛围",
+    "spatial_composition": "营造出空间的压迫感和神秘感"
+  },
+  "lighting_style": "以昏暗的环境光为主，觉醒能力时用明亮的光芒突出效果",
+  "texture_style": "注重材质质感，场景和道具纹理丰富",
+  "composition_rules": [
+    "突出主体，人物和关键道具在画面中占比较大",
+    "利用光影对比增强氛围和立体感",
+    "画面布局合理，避免元素过于拥挤"
+  ],
+  "asset_card_rules": {
+    "label_language": "zh-CN",
+    "label_position": "图片下方或侧面，不影响主体展示",
+    "label_style": "简洁清晰，字体大小适中",
+    "layout_style": "左侧大主图，右侧三个辅助视图，布局整齐",
+    "prohibited_elements": [
+      "可读文字",
+      "页眉页脚",
+      "二维码",
+      "色条",
+      "角标",
+      "logo",
+      "水印",
+      "UI 装饰"
+    ]
+  },
+  "mood_keywords": [
+    "紧张",
+    "兴奋",
+    "冒险",
+    "神秘",
+    "奇幻"
+  ],
+  "negative_keywords": [
+    "粗糙截图感",
+    "低幼卡通感",
+    "色彩过于鲜艳刺眼",
+    "画面模糊不清",
+    "人物比例失调"
+  ],
+  "consistency_anchors": "本项目为冒险题材漫剧，整体视觉风格为高质量写实风，以暗色调为主，突出紧张、兴奋的冒险氛围。人物为年轻天才少女，眼神聪慧，常身处昏暗危险的挑战现场。光芒力量是少女觉醒能力的体现，与少女紧密关联。所有资产图需保持风格统一、稳定、可重复，符合上述设定。"
+}

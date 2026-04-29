@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "source_run": "run14",
+  "source_script_name": "e2e_short_ui_goal",
+  "title": "",
+  "global_video_spec": {
+    "shot_duration_sec": 10,
+    "aspect_ratio": "16:9",
+    "first_frame_mode": "stitched_asset_board_reference",
+    "first_frame_transition": "reference_only_cinematic_opening",
+    "prompt_language": "zh-CN"
+  },
+  "shots": [
+    {
+      "id": "shot_001",
+      "order": 1,
+      "segment_ids": [
+        "seg_001"
+      ],
+      "duration_sec": 10,
+      "primary_scene_id": "scene_001",
+      "character_ids": [
+        "char_001"
+      ],
+      "visible_character_ids": [
+        "char_001"
+      ],
+      "prop_ids": [],
+      "visible_prop_ids": [],
+      "primary_subject_ids": [
+        "char_001"
+      ],
+      "shot_type": "establishing",
+      "board_layout_hint": "single_character",
+      "shot_size": "full",
+      "camera_angle": "eye_level",
+      "camera_movement": "static",
+      "shot_purpose": "介绍少女身处危险挑战现场的情境",
+      "subject_action": "少女身体微微颤抖，眉头紧锁，眼神坚定",
+      "background_action": "昏暗的挑战现场，四周暗藏危机",
+      "emotion_tone": "紧张、恐惧",
+      "continuity_notes": [
+        "少女总是出现在挑战现场"
+      ],
+      "prompt_core": "年轻天才少女身处昏暗危险的挑战现场，内心恐惧但坚定面对"
+    },
+    {
+      "id": "shot_002",
+      "order": 2,
+      "segment_ids": [
+        "seg_002"
+      ],
+      "duration_sec": 10,
+      "primary_scene_id": "scene_001",
+      "character_ids": [
+        "char_001"
+      ],
+      "visible_character_ids": [
+        "char_001"
+      ],
+      "prop_ids": [
+        "prop_001"
+      ],
+      "visible_prop_ids": [
+        "prop_001"
+      ],
+      "primary_subject_ids": [
+        "char_001",
+        "prop_001"
+      ],
+      "shot_type": "action",
+      "board_layout_hint": "single_character",
+      "shot_size": "full",
+      "camera_angle": "eye_level",
+      "camera_movement": "slow_push_in",
+      "shot_purpose": "展现少女觉醒能力的过程和惊喜的心情",
+      "subject_action": "少女觉醒能力，光芒从体内闪耀，眼神明亮，脸上兴奋",
+      "background_action": "光芒照亮挑战现场，危险气息消散",
+      "emotion_tone": "兴奋、惊喜",
+      "continuity_notes": [
+        "光芒力量是少女觉醒能力的标志，与少女相关联；少女总是出现在挑战现场"
+      ],
+      "prompt_core": "少女在挑战中觉醒能力，光芒驱散危险，惊喜准备迎接新冒险"
+    }
+  ]
+}
