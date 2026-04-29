@@ -119,6 +119,7 @@ const showcaseCases: ShowcaseCase[] = [
 const caseMap = new Map(showcaseCases.map((item) => [item.slug, item]))
 const storyboardCache = new Map<string, Promise<StoryboardDocument>>()
 const scriptCache = new Map<string, Promise<string>>()
+const inputCache = new Map<string, Promise<string>>()
 
 const app = document.querySelector<HTMLDivElement>('#app')
 
@@ -167,6 +168,24 @@ const loadScript = (item: ShowcaseCase): Promise<string> => {
   })
 
   scriptCache.set(item.assetKey, request)
+  return request
+}
+
+const loadInput = (item: ShowcaseCase): Promise<string> => {
+  const cached = inputCache.get(item.assetKey)
+  if (cached) {
+    return cached
+  }
+
+  const request = fetch(assetUrl(item.assetKey, 'input/source_input.txt')).then(async (response) => {
+    if (!response.ok) {
+      throw new Error(`Failed to load input for ${item.assetKey}`)
+    }
+
+    return (await response.text()).trim()
+  })
+
+  inputCache.set(item.assetKey, request)
   return request
 }
 
@@ -280,7 +299,12 @@ const renderError = (item: ShowcaseCase): string => `
   </div>
 `
 
-const renderCaseDetail = (item: ShowcaseCase, script: string, storyboard: StoryboardDocument): string => {
+const renderCaseDetail = (
+  item: ShowcaseCase,
+  inputText: string,
+  script: string,
+  storyboard: StoryboardDocument,
+): string => {
   const orderedShots = [...storyboard.shots].sort((left, right) => left.order - right.order)
 
   return `
@@ -299,6 +323,7 @@ const renderCaseDetail = (item: ShowcaseCase, script: string, storyboard: Storyb
               <span>完整公开案例</span>
             </div>
             <div class="detail-nav">
+              <button type="button" data-scroll-target="section-input">输入</button>
               <button type="button" data-scroll-target="section-script">剧本</button>
               <button type="button" data-scroll-target="section-boards">分镜图</button>
               <button type="button" data-scroll-target="section-shots">分镜视频</button>
@@ -313,6 +338,16 @@ const renderCaseDetail = (item: ShowcaseCase, script: string, storyboard: Storyb
       </header>
 
       <main class="detail-main">
+        <section class="detail-section" id="section-input">
+          <div class="section-heading">
+            <span class="section-kicker">输入</span>
+            <h2>原始输入内容</h2>
+          </div>
+          <div class="script-panel input-panel">
+            <pre>${htmlEscape(inputText)}</pre>
+          </div>
+        </section>
+
         <section class="detail-section" id="section-script">
           <div class="section-heading">
             <span class="section-kicker">剧本</span>
@@ -436,12 +471,16 @@ const render = async (): Promise<void> => {
   app.innerHTML = renderLoading(route.item)
 
   try {
-    const [script, storyboard] = await Promise.all([loadScript(route.item), loadStoryboard(route.item)])
+    const [inputText, script, storyboard] = await Promise.all([
+      loadInput(route.item),
+      loadScript(route.item),
+      loadStoryboard(route.item),
+    ])
     if (currentToken !== renderToken) {
       return
     }
 
-    app.innerHTML = renderCaseDetail(route.item, script, storyboard)
+    app.innerHTML = renderCaseDetail(route.item, inputText, script, storyboard)
   } catch (error) {
     console.error(error)
     if (currentToken !== renderToken) {

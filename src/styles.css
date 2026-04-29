@@ -350,6 +350,10 @@ video {
   overflow: auto;
 }
 
+.input-panel {
+  max-height: 220px;
+}
+
 .script-panel pre {
   margin: 0;
   white-space: pre-wrap;
