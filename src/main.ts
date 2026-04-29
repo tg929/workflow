@@ -203,7 +203,6 @@ const renderHome = (): string => {
       <main class="home-main">
         <section class="section-intro">
           <span class="section-kicker">精选案例</span>
-          <h2>先看成片效果，再进入完整链路。</h2>
           <p>首页聚焦作品本身，详情页统一保留剧本、分镜图、分镜视频与最终视频。</p>
         </section>
 
