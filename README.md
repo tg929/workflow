@@ -1,27 +1,24 @@
-# Run14 Anime Short Showcase
+# AI Anime Workflow Showcase
 
-A static showcase site built from the `run14` anime short case.
+A recruiter-facing static portfolio site for an `AI anime short creation workflow`.
 
-The site is intentionally simple and content-first. It focuses on four sections only:
+This site now uses a `portfolio-first` structure instead of a single-case landing page:
 
-- 剧本
-- 分镜图
-- 分镜视频
-- 最终视频
+- homepage with `1 featured case + 2 supporting cases`
+- dedicated detail page for each case
+- fixed detail layout:
+  - `剧本`
+  - `分镜图`
+  - `分镜视频`
+  - `最终视频`
 
-## Purpose
+## Included cases
 
-This project is designed as a public portfolio page for recruiters and interviewers.
+- `初次觉醒`
+- `斩断宿命`
+- `重返赛点`
 
-Instead of exposing the full original product stack, it presents one finished case in a clean and stable format that can be deployed with GitHub Pages.
-
-## Included content
-
-- the final 20-second video
-- two storyboard boards
-- two shot-level videos
-- the original prompt and short script summary
-- curated `run14` assets packaged for static hosting
+All three cases are packaged as public static assets for GitHub Pages.
 
 ## Local development
 
@@ -36,32 +33,32 @@ npm run dev
 npm run build
 ```
 
-## GitHub Pages build
-
-If this project is published under a repository subpath, build with:
+If the site is published under a GitHub repository subpath:
 
 ```bash
 SHOWCASE_BASE=/your-repo-name/ npm run build
 ```
 
-The repository already includes a GitHub Actions workflow for GitHub Pages deployment:
+## Deployment
+
+This repository already includes a GitHub Pages workflow:
 
 `/.github/workflows/deploy.yml`
 
-## Suggested publish flow
+Typical publish flow:
 
-1. Move this folder into its own repository.
-2. Push the repository to GitHub on `main`.
-3. In GitHub, enable Pages with `GitHub Actions` as the source.
-4. Let the included workflow build and publish the site.
+1. Push to `main`
+2. Enable `GitHub Actions` as the Pages source
+3. Let the included workflow build and deploy the site
 
 ## Asset scope
 
-This repository uses a curated subset of `run14` only:
+This repository includes only the static assets required by the showcase pages:
 
-- final video
-- selected storyboard images
-- selected shot videos
-- selected public metadata
+- final videos
+- storyboard boards
+- shot-level videos
+- cleaned scripts
+- minimal metadata used for rendering
 
-The full original frontend, backend, runtime config, and private model setup are intentionally excluded.
+The full original product codebase, backend runtime, and private model configuration are intentionally excluded.

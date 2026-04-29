@@ -1,0 +1,140 @@
+{
+  "schema_version": "1.0",
+  "source_run": "run4",
+  "source_script_name": "制作30秒动漫视频",
+  "title": "重启的电竞梦",
+  "global_video_spec": {
+    "shot_duration_sec": 10,
+    "aspect_ratio": "16:9",
+    "first_frame_mode": "stitched_asset_board_reference",
+    "first_frame_transition": "reference_only_cinematic_opening",
+    "prompt_language": "zh-CN"
+  },
+  "shots": [
+    {
+      "id": "shot_001",
+      "order": 1,
+      "segment_ids": [
+        "seg_001",
+        "seg_002",
+        "seg_003",
+        "seg_004"
+      ],
+      "duration_sec": 10,
+      "primary_scene_id": "scene_001",
+      "character_ids": [
+        "char_001"
+      ],
+      "visible_character_ids": [
+        "char_001"
+      ],
+      "prop_ids": [
+        "prop_001",
+        "prop_002",
+        "prop_004"
+      ],
+      "visible_prop_ids": [
+        "prop_001"
+      ],
+      "primary_subject_ids": [
+        "char_001",
+        "prop_001"
+      ],
+      "shot_type": "establishing",
+      "board_layout_hint": "balanced",
+      "shot_size": "medium_full",
+      "camera_angle": "eye_level",
+      "camera_movement": "slow_push_in",
+      "shot_purpose": "建立出租屋场景，展现主角消沉状态，引出核心道具冠军奖杯",
+      "subject_action": "林辰窝在掉皮电脑椅上漫无目的地划手机，动发麻的胳膊时手肘扫到桌角奖杯，奖杯滚到脚边，他垂眼注视奖杯，指尖无意识摩挲左手护腕",
+      "background_action": "灰蓝色窗帘被风轻轻吹动，细碎阳光落在墙面褪色电竞海报上，桌面散落外卖盒",
+      "emotion_tone": "压抑颓废",
+      "continuity_notes": [
+        "林辰眼下带淡青黑，左手佩戴旧白色护腕，冠军奖杯蒙薄灰"
+      ],
+      "prompt_core": "昏暗狭小的出租屋内，消沉的林辰手肘扫到桌角，蒙着薄灰的2022全国电竞冠军奖杯滚到他脚边，他垂眼注视奖杯，指尖摩挲左手的旧护腕"
+    },
+    {
+      "id": "shot_002",
+      "order": 2,
+      "segment_ids": [
+        "seg_005",
+        "seg_006",
+        "seg_007"
+      ],
+      "duration_sec": 10,
+      "primary_scene_id": "scene_002",
+      "character_ids": [
+        "char_001"
+      ],
+      "visible_character_ids": [
+        "char_001"
+      ],
+      "prop_ids": [
+        "prop_001"
+      ],
+      "visible_prop_ids": [
+        "prop_001"
+      ],
+      "primary_subject_ids": [
+        "char_001",
+        "prop_001"
+      ],
+      "shot_type": "transition",
+      "board_layout_hint": "single_character",
+      "shot_size": "medium",
+      "camera_angle": "eye_level",
+      "camera_movement": "static",
+      "shot_purpose": "展现主角过往夺冠荣耀，形成现实与回忆的强烈反差",
+      "subject_action": "林辰陷入回忆，在灯火通明的电竞场馆舞台上举着崭新的冠军奖杯笑露小虎牙，随后喧闹声骤停，他猛地回神回到昏暗出租屋",
+      "background_action": "回忆场馆内观众举应援牌欢呼，舞台大屏显示金色冠军字样；现实中窗外天色擦黑，楼下传来便利店喇叭声",
+      "emotion_tone": "先热血燃向后回归沉寂",
+      "continuity_notes": [
+        "回忆中的林辰眼下无青黑，冠军奖杯光亮崭新，始终佩戴白色护腕"
+      ],
+      "prompt_core": "林辰陷入回忆，在聚光灯明亮的电竞场馆舞台上举着崭新的冠军奖杯，笑得露出小虎牙，台下观众欢呼，随后他猛地回神，回到昏暗的出租屋，奖杯安静躺在脚边"
+    },
+    {
+      "id": "shot_003",
+      "order": 3,
+      "segment_ids": [
+        "seg_008",
+        "seg_009",
+        "seg_010",
+        "seg_011",
+        "seg_012"
+      ],
+      "duration_sec": 10,
+      "primary_scene_id": "scene_001",
+      "character_ids": [
+        "char_001"
+      ],
+      "visible_character_ids": [
+        "char_001"
+      ],
+      "prop_ids": [
+        "prop_003"
+      ],
+      "visible_prop_ids": [
+        "prop_003"
+      ],
+      "primary_subject_ids": [
+        "char_001",
+        "prop_003"
+      ],
+      "shot_type": "action",
+      "board_layout_hint": "balanced",
+      "shot_size": "medium_close",
+      "camera_angle": "eye_level",
+      "camera_movement": "slow_push_in",
+      "shot_purpose": "展现主角克服内心障碍，决定重启电竞梦想的核心转折",
+      "subject_action": "林辰拉出尘封的旧机械键盘，指尖颤抖着悬在空格键上方，随后稳稳按下按键，电脑屏幕亮起，他眼神重新焕发光彩，露出释然的笑容",
+      "background_action": "风掀开墙上电竞海报的一角，屏幕显示新赛季电竞联赛报名公告",
+      "emotion_tone": "温暖励志",
+      "continuity_notes": [
+        "林辰眼下仍带淡青黑，机械键盘空格键掉漆带小狐狸logo，佩戴白色护腕"
+      ],
+      "prompt_core": "林辰拉出尘封的旧机械键盘，悬在半空的指尖稳稳按下掉漆的空格键，电脑屏幕亮起冷光，照亮他重新焕发光彩的双眼，屏幕显示新赛季电竞联赛报名公告，风掀动墙上的海报角"
+    }
+  ]
+}

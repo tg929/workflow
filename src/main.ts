@@ -2,58 +2,123 @@ import './styles.css'
 
 const baseUrl = import.meta.env.BASE_URL
 
-const assetUrl = (path: string): string => `${baseUrl}assets/run14/${path}`
+const assetUrl = (assetKey: string, path: string): string => `${baseUrl}assets/${assetKey}/${path}`
+const caseHref = (slug: string): string => `#/case/${slug}`
 
-type StoryboardItem = {
+type StoryboardShot = {
   id: string
-  title: string
-  summary: string
-  board: string
+  order: number
+  shot_purpose?: string
+  subject_action?: string
 }
 
-type VideoItem = {
-  id: string
-  title: string
-  summary: string
-  video: string
+type StoryboardDocument = {
+  shots: StoryboardShot[]
 }
 
-const metrics = [
-  { label: '时长', value: '20 秒' },
-  { label: '镜头', value: '2 个' },
-  { label: '主角', value: '1 位' },
-  { label: '场景', value: '1 个' },
+type ShotCopy = {
+  title: string
+  summary: string
+}
+
+type ShowcaseCase = {
+  slug: string
+  assetKey: string
+  title: string
+  cardLabel: string
+  hook: string
+  synopsis: string
+  durationLabel: string
+  shotCount: number
+  shotCopy: ShotCopy[]
+}
+
+const showcaseCases: ShowcaseCase[] = [
+  {
+    slug: 'chuci-juexing',
+    assetKey: 'run14',
+    title: '初次觉醒',
+    cardLabel: '主案例',
+    hook: '天才少女在绝境中第一次唤醒力量。',
+    synopsis: '一次危险挑战，成为天才少女第一次能力觉醒的起点。',
+    durationLabel: '18.1 秒',
+    shotCount: 2,
+    shotCopy: [
+      {
+        title: '危险现场',
+        summary: '少女第一次真正直面危险，紧张与坚定同时出现。',
+      },
+      {
+        title: '能力觉醒',
+        summary: '体内光芒爆发，危险被驱散，新的冒险由此展开。',
+      },
+    ],
+  },
+  {
+    slug: 'zhanduan-suming',
+    assetKey: 'run23',
+    title: '斩断宿命',
+    cardLabel: '辅助案例',
+    hook: '被选作祭品的少年，握剑反抗既定命运。',
+    synopsis: '被选作祭品的少年在宿命祭坛上握紧旧剑，正式迈出反抗命运的第一步。',
+    durationLabel: '54.3 秒',
+    shotCount: 6,
+    shotCopy: [
+      {
+        title: '宿命祭坛',
+        summary: '高空祭坛与翻涌云海共同建立压迫感。',
+      },
+      {
+        title: '沉默束缚',
+        summary: '阿尘被丝线捆缚，视线落在父亲留下的旧剑上。',
+      },
+      {
+        title: '被选中的过去',
+        summary: '童年回忆揭开他为何会站上祭坛。',
+      },
+      {
+        title: '怒意回潮',
+        summary: '闷雷回到现实，死寂被不甘与愤怒取代。',
+      },
+      {
+        title: '立誓破命',
+        summary: '他握剑起身，公开宣告要斩断命运枷锁。',
+      },
+      {
+        title: '直面宿命',
+        summary: '惩戒力量降下，他抬头迎向真正的对抗。',
+      },
+    ],
+  },
+  {
+    slug: 'zhongfan-saidian',
+    assetKey: 'run4',
+    title: '重返赛点',
+    cardLabel: '辅助案例',
+    hook: '陨落冠军在旧奖杯与旧键盘前决定再上赛场。',
+    synopsis: '退役后的电竞天才在旧奖杯与旧键盘之间，重新找回回到赛场的决心。',
+    durationLabel: '27.2 秒',
+    shotCount: 3,
+    shotCopy: [
+      {
+        title: '低谷时刻',
+        summary: '出租屋、旧奖杯与颓废状态共同建立人物处境。',
+      },
+      {
+        title: '巅峰回响',
+        summary: '荣耀记忆短暂回到眼前，现实与高光形成对照。',
+      },
+      {
+        title: '重启按键',
+        summary: '他按下旧键盘，重新决定回到电竞赛场。',
+      },
+    ],
+  },
 ]
 
-const storyboardItems: StoryboardItem[] = [
-  {
-    id: '镜头一',
-    title: '危险挑战现场',
-    summary: '少女置身昏暗压迫的挑战现场，紧张、恐惧，但依然保持清醒与坚定。',
-    board: assetUrl('storyboards/shot_001_board.png'),
-  },
-  {
-    id: '镜头二',
-    title: '能力觉醒瞬间',
-    summary: '光芒从体内爆发，危险被驱散，少女从惊惧转向兴奋，新的冒险由此展开。',
-    board: assetUrl('storyboards/shot_002_board.png'),
-  },
-]
-
-const shotVideos: VideoItem[] = [
-  {
-    id: '镜头一视频',
-    title: '挑战现场建立镜头',
-    summary: '以环境和人物状态为主，完成气氛建立。',
-    video: assetUrl('shots/shot_001.mp4'),
-  },
-  {
-    id: '镜头二视频',
-    title: '觉醒与反转镜头',
-    summary: '以能力激活为核心，完成情绪和光效变化。',
-    video: assetUrl('shots/shot_002.mp4'),
-  },
-]
+const caseMap = new Map(showcaseCases.map((item) => [item.slug, item]))
+const storyboardCache = new Map<string, Promise<StoryboardDocument>>()
+const scriptCache = new Map<string, Promise<string>>()
 
 const app = document.querySelector<HTMLDivElement>('#app')
 
@@ -61,128 +126,353 @@ if (!app) {
   throw new Error('App root not found')
 }
 
-app.innerHTML = `
-  <div class="page-shell">
-    <header class="hero">
-      <div class="hero-copy">
-        <span class="eyebrow">漫剧创作案例 · Run14</span>
-        <h1>天才少女的能力觉醒</h1>
-        <p class="lede">
-          一个 20 秒的动漫短片案例展示页，聚焦四个部分：
-          剧本、分镜图、分镜视频、最终视频。
-        </p>
-        <div class="quick-nav">
-          <a href="#script">剧本</a>
-          <a href="#boards">分镜图</a>
-          <a href="#shots">分镜视频</a>
-          <a href="#final-video">最终视频</a>
+const htmlEscape = (value: string): string =>
+  value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;')
+
+const loadStoryboard = (item: ShowcaseCase): Promise<StoryboardDocument> => {
+  const cached = storyboardCache.get(item.assetKey)
+  if (cached) {
+    return cached
+  }
+
+  const request = fetch(assetUrl(item.assetKey, 'metadata/storyboard.json')).then(async (response) => {
+    if (!response.ok) {
+      throw new Error(`Failed to load storyboard for ${item.assetKey}`)
+    }
+
+    return (await response.json()) as StoryboardDocument
+  })
+
+  storyboardCache.set(item.assetKey, request)
+  return request
+}
+
+const loadScript = (item: ShowcaseCase): Promise<string> => {
+  const cached = scriptCache.get(item.assetKey)
+  if (cached) {
+    return cached
+  }
+
+  const request = fetch(assetUrl(item.assetKey, 'script/script_clean.txt')).then(async (response) => {
+    if (!response.ok) {
+      throw new Error(`Failed to load script for ${item.assetKey}`)
+    }
+
+    return (await response.text()).trim()
+  })
+
+  scriptCache.set(item.assetKey, request)
+  return request
+}
+
+const updateMeta = (item?: ShowcaseCase): void => {
+  const title = item ? `${item.title} · AI 漫剧创作工作流案例集` : 'AI 漫剧创作工作流案例集'
+  const description = item
+    ? `${item.title}：${item.synopsis}`
+    : '中文项目作品集，展示 AI 漫剧创作工作流生成的公开案例，从剧本、分镜到最终成片。'
+
+  document.title = title
+
+  const descriptionMeta = document.querySelector<HTMLMetaElement>('meta[name="description"]')
+  if (descriptionMeta) {
+    descriptionMeta.content = description
+  }
+}
+
+const renderHome = (): string => {
+  const [featuredCase, ...secondaryCases] = showcaseCases
+
+  return `
+    <div class="site-shell">
+      <header class="home-hero">
+        <span class="eyebrow">AI 漫剧创作工作流</span>
+        <h1>AI 漫剧创作工作流案例集</h1>
+        <p class="hero-lede">展示 AI 漫剧创作工作流生成的完整案例，从剧本、分镜到最终成片。</p>
+        <div class="overview-pills">
+          <span>3 个公开案例</span>
+          <span>多阶段 AI 工作流</span>
+          <span>剧本 · 分镜 · 视频 · 成片</span>
         </div>
-      </div>
-      <div class="hero-metrics">
-        <ul class="metric-ribbon">
-            ${metrics
+      </header>
+
+      <main class="home-main">
+        <section class="section-intro">
+          <span class="section-kicker">精选案例</span>
+          <h2>先看成片效果，再进入完整链路。</h2>
+          <p>首页聚焦作品本身，详情页统一保留剧本、分镜图、分镜视频与最终视频。</p>
+        </section>
+
+        <section class="portfolio-layout">
+          <a class="case-card featured-card" href="${caseHref(featuredCase.slug)}" aria-label="查看 ${featuredCase.title}">
+            <div class="case-card-media">
+              <img src="${assetUrl(featuredCase.assetKey, 'cover.jpg')}" alt="${featuredCase.title}" />
+            </div>
+            <div class="case-card-body">
+              <div class="card-topline">
+                <span class="case-badge">${featuredCase.cardLabel}</span>
+              </div>
+              <h3>${featuredCase.title}</h3>
+              <p>${featuredCase.hook}</p>
+              <div class="case-stats">
+                <span>${featuredCase.durationLabel}</span>
+                <span>${featuredCase.shotCount} 个镜头</span>
+              </div>
+            </div>
+          </a>
+
+          <div class="secondary-stack">
+            ${secondaryCases
               .map(
-                (metric) => `
-                  <li>
-                    <strong>${metric.value}</strong>
-                    <span>${metric.label}</span>
-                  </li>
+                (item) => `
+                  <a class="case-card secondary-card" href="${caseHref(item.slug)}" aria-label="查看 ${item.title}">
+                    <div class="case-card-media">
+                      <img src="${assetUrl(item.assetKey, 'cover.jpg')}" alt="${item.title}" />
+                    </div>
+                    <div class="case-card-body">
+                      <div class="card-topline">
+                        <span class="case-badge">${item.cardLabel}</span>
+                      </div>
+                      <h3>${item.title}</h3>
+                      <p>${item.hook}</p>
+                      <div class="case-stats">
+                        <span>${item.durationLabel}</span>
+                        <span>${item.shotCount} 个镜头</span>
+                      </div>
+                    </div>
+                  </a>
                 `,
               )
               .join('')}
-        </ul>
-        <p class="hero-brief">原始输入：帮我做一个 20 秒的动漫短片，讲一个天才少女第一次觉醒能力。</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  `
+}
+
+const renderLoading = (item: ShowcaseCase): string => `
+  <div class="site-shell">
+    <header class="detail-hero">
+      <a class="back-link" href="#/">返回案例集</a>
+      <div class="loading-panel">
+        <span class="eyebrow">案例详情</span>
+        <h1>${item.title}</h1>
+        <p>正在加载剧本、分镜图、分镜视频与最终视频。</p>
       </div>
     </header>
-
-    <main class="content">
-      <section class="section" id="script">
-        <div class="section-heading">
-          <span class="eyebrow">剧本</span>
-          <h2>从一句目标到两段短片内容。</h2>
-        </div>
-        <div class="script-grid">
-          <div class="text-card text-card-compact">
-            <span class="card-label">原始目标</span>
-            <p>帮我做一个 20 秒的动漫短片，讲一个天才少女第一次觉醒能力。</p>
-          </div>
-          <div class="text-card">
-            <span class="card-label">剧情内容</span>
-            <p>
-              昏暗的挑战现场里，年轻的天才少女第一次面对真正危险的局面。
-              她紧张、害怕，身体微微颤抖，却仍然没有退缩。
-            </p>
-            <p>
-              当巨大压力逼近，她体内的力量突然觉醒。光芒从身体中爆发，
-              照亮了整个现场，也驱散了原本的危机。她意识到，新的冒险才刚刚开始。
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="boards">
-        <div class="section-heading">
-          <span class="eyebrow">分镜图</span>
-          <h2>两个镜头，对应完整的情绪推进。</h2>
-        </div>
-        <div class="board-grid">
-          ${storyboardItems
-            .map(
-              (item) => `
-                <article class="media-card">
-                  <img src="${item.board}" alt="${item.id}" />
-                  <div class="media-copy">
-                    <span class="card-label">${item.id}</span>
-                    <h3>${item.title}</h3>
-                    <p>${item.summary}</p>
-                  </div>
-                </article>
-              `,
-            )
-            .join('')}
-        </div>
-      </section>
-
-      <section class="section" id="shots">
-        <div class="section-heading">
-          <span class="eyebrow">分镜视频</span>
-          <h2>每个镜头都单独生成，再拼接成最终成片。</h2>
-        </div>
-        <div class="video-grid">
-          ${shotVideos
-            .map(
-              (item) => `
-                <article class="media-card">
-                  <video controls playsinline preload="metadata">
-                    <source src="${item.video}" type="video/mp4" />
-                  </video>
-                  <div class="media-copy">
-                    <span class="card-label">${item.id}</span>
-                    <h3>${item.title}</h3>
-                    <p>${item.summary}</p>
-                  </div>
-                </article>
-              `,
-            )
-            .join('')}
-        </div>
-      </section>
-
-      <section class="section" id="final-video">
-        <div class="section-heading">
-          <span class="eyebrow">最终视频</span>
-          <h2>完整成片。</h2>
-        </div>
-        <div class="final-video-card">
-          <video controls playsinline preload="metadata" poster="${assetUrl('storyboards/shot_002_first_frame.png')}">
-            <source src="${assetUrl('final/final_video.mp4')}" type="video/mp4" />
-          </video>
-          <div class="final-note">
-            <span class="card-label">Run14</span>
-            <p>由两个分镜视频剪辑拼接而成的 20 秒成片。</p>
-          </div>
-        </div>
-      </section>
-    </main>
   </div>
 `
+
+const renderError = (item: ShowcaseCase): string => `
+  <div class="site-shell">
+    <header class="detail-hero">
+      <a class="back-link" href="#/">返回案例集</a>
+      <div class="loading-panel">
+        <span class="eyebrow">加载失败</span>
+        <h1>${item.title}</h1>
+        <p>当前案例资源未能完整读取，请稍后重试。</p>
+      </div>
+    </header>
+  </div>
+`
+
+const renderCaseDetail = (item: ShowcaseCase, script: string, storyboard: StoryboardDocument): string => {
+  const orderedShots = [...storyboard.shots].sort((left, right) => left.order - right.order)
+
+  return `
+    <div class="site-shell">
+      <header class="detail-hero">
+        <a class="back-link" href="#/">返回案例集</a>
+
+        <div class="detail-grid">
+          <div class="detail-copy">
+            <span class="eyebrow">案例详情</span>
+            <h1>${item.title}</h1>
+            <p class="detail-lede">${item.synopsis}</p>
+            <div class="detail-pills">
+              <span>${item.durationLabel}</span>
+              <span>${item.shotCount} 个镜头</span>
+              <span>完整公开案例</span>
+            </div>
+            <div class="detail-nav">
+              <button type="button" data-scroll-target="section-script">剧本</button>
+              <button type="button" data-scroll-target="section-boards">分镜图</button>
+              <button type="button" data-scroll-target="section-shots">分镜视频</button>
+              <button type="button" data-scroll-target="section-final">最终视频</button>
+            </div>
+          </div>
+
+          <div class="detail-cover">
+            <img src="${assetUrl(item.assetKey, 'cover.jpg')}" alt="${item.title}" />
+          </div>
+        </div>
+      </header>
+
+      <main class="detail-main">
+        <section class="detail-section" id="section-script">
+          <div class="section-heading">
+            <span class="section-kicker">剧本</span>
+            <h2>完整剧本全文</h2>
+          </div>
+          <div class="script-panel">
+            <pre>${htmlEscape(script)}</pre>
+          </div>
+        </section>
+
+        <section class="detail-section" id="section-boards">
+          <div class="section-heading">
+            <span class="section-kicker">分镜图</span>
+            <h2>按镜头顺序完整展开</h2>
+          </div>
+          <div class="media-grid">
+            ${orderedShots
+              .map((shot, index) => {
+                const copy = item.shotCopy[index]
+                return `
+                  <article class="media-card">
+                    <img src="${assetUrl(item.assetKey, `storyboards/${shot.id}.png`)}" alt="${item.title} 分镜 ${index + 1}" loading="lazy" />
+                    <div class="media-copy">
+                      <span class="media-index">镜头 ${String(index + 1).padStart(2, '0')}</span>
+                      <h3>${copy?.title ?? `镜头 ${index + 1}`}</h3>
+                      <p>${copy?.summary ?? shot.shot_purpose ?? '镜头内容说明。'}</p>
+                    </div>
+                  </article>
+                `
+              })
+              .join('')}
+          </div>
+        </section>
+
+        <section class="detail-section" id="section-shots">
+          <div class="section-heading">
+            <span class="section-kicker">分镜视频</span>
+            <h2>每个镜头逐个展示</h2>
+          </div>
+          <div class="media-grid">
+            ${orderedShots
+              .map((shot, index) => {
+                const copy = item.shotCopy[index]
+                return `
+                  <article class="media-card">
+                    <video controls playsinline preload="metadata" poster="${assetUrl(item.assetKey, `storyboards/${shot.id}.png`)}">
+                      <source src="${assetUrl(item.assetKey, `shots/${shot.id}.mp4`)}" type="video/mp4" />
+                    </video>
+                    <div class="media-copy">
+                      <span class="media-index">镜头 ${String(index + 1).padStart(2, '0')}</span>
+                      <h3>${copy?.title ?? `镜头 ${index + 1}`}</h3>
+                      <p>${copy?.summary ?? shot.subject_action ?? '镜头视频片段。'}</p>
+                    </div>
+                  </article>
+                `
+              })
+              .join('')}
+          </div>
+        </section>
+
+        <section class="detail-section" id="section-final">
+          <div class="section-heading">
+            <span class="section-kicker">最终视频</span>
+            <h2>完整成片</h2>
+          </div>
+          <article class="final-panel">
+            <video controls playsinline preload="metadata" poster="${assetUrl(item.assetKey, 'cover.jpg')}">
+              <source src="${assetUrl(item.assetKey, 'final/final_video.mp4')}" type="video/mp4" />
+            </video>
+            <div class="final-copy">
+              <span class="media-index">成片说明</span>
+              <p>按照镜头顺序拼接生成的最终视频，可直接查看完整效果。</p>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+  `
+}
+
+type Route =
+  | { kind: 'home' }
+  | { kind: 'case'; item: ShowcaseCase }
+
+const getRoute = (): Route => {
+  const hash = window.location.hash.replace(/^#/, '').replace(/^\/+/, '')
+
+  if (!hash) {
+    return { kind: 'home' }
+  }
+
+  if (!hash.startsWith('case/')) {
+    return { kind: 'home' }
+  }
+
+  const slug = hash.slice('case/'.length)
+  const item = caseMap.get(slug)
+
+  if (!item) {
+    return { kind: 'home' }
+  }
+
+  return { kind: 'case', item }
+}
+
+let renderToken = 0
+
+const render = async (): Promise<void> => {
+  const currentToken = ++renderToken
+  const route = getRoute()
+
+  window.scrollTo({ top: 0, behavior: 'auto' })
+
+  if (route.kind === 'home') {
+    updateMeta()
+    app.innerHTML = renderHome()
+    return
+  }
+
+  updateMeta(route.item)
+  app.innerHTML = renderLoading(route.item)
+
+  try {
+    const [script, storyboard] = await Promise.all([loadScript(route.item), loadStoryboard(route.item)])
+    if (currentToken !== renderToken) {
+      return
+    }
+
+    app.innerHTML = renderCaseDetail(route.item, script, storyboard)
+  } catch (error) {
+    console.error(error)
+    if (currentToken !== renderToken) {
+      return
+    }
+
+    app.innerHTML = renderError(route.item)
+  }
+}
+
+app.addEventListener('click', (event) => {
+  const target = event.target as HTMLElement | null
+  const trigger = target?.closest<HTMLElement>('[data-scroll-target]')
+
+  if (!trigger) {
+    return
+  }
+
+  event.preventDefault()
+  const sectionId = trigger.dataset.scrollTarget
+
+  if (!sectionId) {
+    return
+  }
+
+  document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+})
+
+window.addEventListener('hashchange', () => {
+  void render()
+})
+
+void render()

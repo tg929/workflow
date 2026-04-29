@@ -1,0 +1,243 @@
+{
+  "schema_version": "1.0",
+  "source_run": "run23",
+  "source_script_name": "0324-1",
+  "title": "破命",
+  "global_video_spec": {
+    "shot_duration_sec": 10,
+    "aspect_ratio": "16:9",
+    "first_frame_mode": "stitched_asset_board",
+    "first_frame_transition": "fast_transform_into_cinematic_scene",
+    "prompt_language": "zh-CN"
+  },
+  "shots": [
+    {
+      "id": "shot_001",
+      "order": 1,
+      "segment_ids": [
+        "seg_001"
+      ],
+      "duration_sec": 10,
+      "primary_scene_id": "scene_001",
+      "character_ids": [],
+      "visible_character_ids": [],
+      "prop_ids": [],
+      "visible_prop_ids": [],
+      "primary_subject_ids": [
+        "scene_001"
+      ],
+      "shot_type": "establishing",
+      "board_layout_hint": "scene_dominant",
+      "shot_size": "wide",
+      "camera_angle": "eye_level",
+      "camera_movement": "slow_pull_out",
+      "shot_purpose": "交代核心场景，营造压抑诡谲的宿命氛围",
+      "subject_action": "宿命祭坛地面暗红色命运图腾泛着红光微微搏动，四周墨色乌云翻涌，云海流动",
+      "background_action": "",
+      "emotion_tone": "压抑沉郁",
+      "continuity_notes": [
+        "保留祭坛暗红色命运图腾、墨色乌云、翻涌云海核心元素，整体冷调"
+      ],
+      "prompt_core": "黄昏将尽，高空云海之上的宿命祭坛被厚重乌云笼罩，地面刻着的暗红色命运图腾泛着诡谲红光微微搏动"
+    },
+    {
+      "id": "shot_002",
+      "order": 2,
+      "segment_ids": [
+        "seg_002"
+      ],
+      "duration_sec": 10,
+      "primary_scene_id": "scene_001",
+      "character_ids": [
+        "char_001"
+      ],
+      "visible_character_ids": [
+        "char_001"
+      ],
+      "prop_ids": [
+        "prop_001"
+      ],
+      "visible_prop_ids": [
+        "prop_001"
+      ],
+      "primary_subject_ids": [
+        "char_001",
+        "prop_001",
+        "scene_001"
+      ],
+      "shot_type": "reaction",
+      "board_layout_hint": "balanced",
+      "shot_size": "medium_full",
+      "camera_angle": "high_angle",
+      "camera_movement": "slow_push_in",
+      "shot_purpose": "展现主角当前被困处境，铺垫后续反抗动因",
+      "subject_action": "阿尘被墨黑色丝线捆缚在祭坛图腾中央，垂头看向脚边的旧剑，神色死寂",
+      "background_action": "周围半透明祭祀丝线随着呼吸微微收紧",
+      "emotion_tone": "死寂压抑",
+      "continuity_notes": [
+        "保留阿尘左脸寸许旧疤，旧剑青铜剑身、三处缺口特征清晰可见"
+      ],
+      "prompt_core": "十五六岁的黑衣少年阿尘被墨黑色丝线捆缚在宿命祭坛图腾中央，视线落在脚边父亲遗留的旧剑上"
+    },
+    {
+      "id": "shot_003",
+      "order": 3,
+      "segment_ids": [
+        "seg_003",
+        "seg_004"
+      ],
+      "duration_sec": 10,
+      "primary_scene_id": "scene_002",
+      "character_ids": [
+        "char_001",
+        "char_002",
+        "char_003"
+      ],
+      "visible_character_ids": [
+        "char_001",
+        "char_002"
+      ],
+      "prop_ids": [
+        "prop_001",
+        "prop_002"
+      ],
+      "visible_prop_ids": [
+        "prop_002"
+      ],
+      "primary_subject_ids": [
+        "char_001",
+        "char_002",
+        "scene_002"
+      ],
+      "shot_type": "transition",
+      "board_layout_hint": "multi_character",
+      "shot_size": "medium",
+      "camera_angle": "eye_level",
+      "camera_movement": "static",
+      "shot_purpose": "闪回交代主角成为天定祭品的过往，补全人物动机",
+      "subject_action": "十岁的阿尘站在旧居槐树下，听族中长老告知自己是天定祭品，倔强地盯着长老腰间的旧剑",
+      "background_action": "院角老槐树叶子飘落，墙根残损祭字木牌静静立着",
+      "emotion_tone": "委屈隐忍",
+      "continuity_notes": [
+        "回忆场景使用暖光，与现实冷调明确区分，保留旧居破洞院墙、老槐树、残损祭字木牌元素"
+      ],
+      "prompt_core": "阿尘陷入回忆，回到十岁那年的旧居小院，族中长老告知他是天定祭品，成年时要献祭换全族风调雨顺"
+    },
+    {
+      "id": "shot_004",
+      "order": 4,
+      "segment_ids": [
+        "seg_005"
+      ],
+      "duration_sec": 10,
+      "primary_scene_id": "scene_001",
+      "character_ids": [
+        "char_001",
+        "char_002",
+        "char_003"
+      ],
+      "visible_character_ids": [
+        "char_001"
+      ],
+      "prop_ids": [
+        "prop_001"
+      ],
+      "visible_prop_ids": [
+        "prop_001"
+      ],
+      "primary_subject_ids": [
+        "char_001",
+        "prop_001"
+      ],
+      "shot_type": "action",
+      "board_layout_hint": "single_character",
+      "shot_size": "medium_close",
+      "camera_angle": "eye_level",
+      "camera_movement": "slow_push_in",
+      "shot_purpose": "展现主角从回忆回归现实，情绪从死寂转向愤怒沸腾",
+      "subject_action": "闷雷将阿尘拉回现实，他挣脱茫然，攥住旧剑剑柄，眼底燃起愤怒的光",
+      "background_action": "周围黑色祭祀丝线被扯得绷紧微微颤动，图腾红光闪烁",
+      "emotion_tone": "愤怒不甘",
+      "continuity_notes": [
+        "回归冷调祭坛场景，阿尘左脸旧疤清晰可见，旧剑特征保持统一"
+      ],
+      "prompt_core": "闷雷将阿尘拉回宿命祭坛，他挣脱茫然，攥住旧剑剑柄，心底的不甘和愤怒彻底沸腾"
+    },
+    {
+      "id": "shot_005",
+      "order": 5,
+      "segment_ids": [
+        "seg_006"
+      ],
+      "duration_sec": 10,
+      "primary_scene_id": "scene_001",
+      "character_ids": [
+        "char_001"
+      ],
+      "visible_character_ids": [
+        "char_001"
+      ],
+      "prop_ids": [
+        "prop_001"
+      ],
+      "visible_prop_ids": [
+        "prop_001"
+      ],
+      "primary_subject_ids": [
+        "char_001",
+        "prop_001"
+      ],
+      "shot_type": "action",
+      "board_layout_hint": "single_character",
+      "shot_size": "full",
+      "camera_angle": "low_angle",
+      "camera_movement": "static",
+      "shot_purpose": "展现主角反抗宿命的核心动作，突出热血反抗的主题",
+      "subject_action": "阿尘握着旧剑站起身，对着乌云立誓要斩断命运枷锁，挥剑砍向捆缚自己的黑色丝线",
+      "background_action": "云层漏下暖金天光打在阿尘身上，祭坛图腾红光骤亮发出警告",
+      "emotion_tone": "热血激昂",
+      "continuity_notes": [
+        "采用低角度仰视构图强化人物力量感，旧剑三处缺口、阿尘左脸旧疤清晰可见"
+      ],
+      "prompt_core": "阿尘握着旧剑站起身，对着乌云立誓要斩断命运枷锁，挥剑砍向捆缚自己的黑色丝线"
+    },
+    {
+      "id": "shot_006",
+      "order": 6,
+      "segment_ids": [
+        "seg_007"
+      ],
+      "duration_sec": 10,
+      "primary_scene_id": "scene_001",
+      "character_ids": [
+        "char_001"
+      ],
+      "visible_character_ids": [
+        "char_001"
+      ],
+      "prop_ids": [
+        "prop_001"
+      ],
+      "visible_prop_ids": [
+        "prop_001"
+      ],
+      "primary_subject_ids": [
+        "char_001",
+        "scene_001"
+      ],
+      "shot_type": "action",
+      "board_layout_hint": "balanced",
+      "shot_size": "wide",
+      "camera_angle": "low_angle",
+      "camera_movement": "slow_pull_out",
+      "shot_purpose": "展现核心冲突升级，交代主角破命之路正式开启",
+      "subject_action": "宿命意志凝聚暗红色惩戒光团要抹杀阿尘，阿尘握剑毫无惧色，抬头直面宿命威压",
+      "background_action": "周围黑色丝线疯狂扭动，乌云翻涌闷雷轰鸣",
+      "emotion_tone": "燃向充满希望",
+      "continuity_notes": [
+        "保留祭坛图腾、墨色乌云、翻涌云海元素，暖金天光打在阿尘左脸旧疤上"
+      ],
+      "prompt_core": "宿命意志感知到阿尘的反抗，凝聚惩戒力量要抹杀他，阿尘毫无惧色，破命之路正式开启"
+    }
+  ]
+}
